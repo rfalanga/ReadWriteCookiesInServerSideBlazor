@@ -1,5 +1,5 @@
-using ReadWriteCookiesInServerSideBlazor.Client.Pages;
-using ReadWriteCookiesInServerSideBlazor.Components;
+using ReadWriteCookie.Client.Pages;
+using ReadWriteCookie.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +31,6 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(ReadWriteCookiesInServerSideBlazor.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(ReadWriteCookie.Client._Imports).Assembly);
 
 app.Run();
