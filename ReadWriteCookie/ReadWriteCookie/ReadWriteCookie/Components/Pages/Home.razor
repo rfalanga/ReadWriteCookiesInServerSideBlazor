@@ -1,0 +1,34 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject IJSRuntime JsRuntime;
+
+<PageTitle>Home</PageTitle>
+
+<h1>Cookie Demo!</h1>
+<p>
+    This is a demo of how to use cookies in Blazor.
+    The JavaScript functions are defined in the <code>wwwroot/js/cookie.js</code> file.
+</p>
+
+<input type="text" class="form-control" placeholder="Enter cookie value" @bind="inputValue" />
+<button class="btn btn-primary" @onclick="WriteCookies">
+    Write Cookie
+</button>
+<button class="btn btn-primary" @onclick="ReadCookies">
+    Read Cookie
+</button>
+
+<p>The cookie is @myCookieValue</p>
+
+@code {
+    private string inputValue = "";
+    public string myCookieValue { get; set; } = "";
+    protected async Task WriteCookies()
+    {
+        await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, DateTime.Now.AddMinutes(1));
+    }
+    protected async Task ReadCookies()
+    {
+        myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "cookieName");
+    }
+}
