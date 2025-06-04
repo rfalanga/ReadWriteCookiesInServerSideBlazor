@@ -1,4 +1,6 @@
-﻿function WriteCookie(name, value, days) {
+﻿console.log("CookieUtilities.js loaded successfully");
+
+function WriteCookie(name, value, days) {
     var expires;
     if (days) {
         var date = new Date();
