@@ -23,12 +23,12 @@
 <script src="js/CookieUtilities.js"></script>
 
 @code {
-    // TODO: I've got to change the length of the cookie to 365, which is what we use at work.
     private string inputValue = "";
     public string myCookieValue { get; set; } = "";
     protected async Task WriteCookies()
     {
-        await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, DateTime.Now.AddMinutes(1));
+        //await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, DateTime.Now.AddMinutes(1));    // This is what Rob had
+        await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, 366);    // Set cookie to expire 366 days, which we have at work
     }
     protected async Task ReadCookies()
     {
