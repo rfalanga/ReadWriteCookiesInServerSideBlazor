@@ -27,11 +27,11 @@
     public string myCookieValue { get; set; } = "";
     protected async Task WriteCookies()
     {
-        //await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, DateTime.Now.AddMinutes(1));    // This is what Rob had
-        await JsRuntime.InvokeAsync<object>("WriteCookie", "cookieName", this.inputValue, 366);    // Set cookie to expire 366 days, which we have at work
+        //await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, DateTime.Now.AddMinutes(1));    // This is what Rob had
+        await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, 366);    // Set cookie to expire 366 days, which we have at work
     }
     protected async Task ReadCookies()
     {
-        myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "cookieName");
+        myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "StaffInfoCookie");
     }
 }
