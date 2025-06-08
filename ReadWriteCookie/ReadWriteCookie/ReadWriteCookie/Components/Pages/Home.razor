@@ -33,5 +33,31 @@
     protected async Task ReadCookies()
     {
         myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "StaffInfoCookie");
+
+        /*
+         * In my debugging of the old app I discovered that the cookie was written like this:
+         * ClinicID=164&JobID=10
+         * Therefore, what I will do is learn how to parse this type of string into its constituent parts
+        */
+       if (myCookieValue != null && myCookieValue.Length > 0)
+        {
+            var parts = myCookieValue.Split('&');
+            foreach (var part in parts)
+            {
+                var keyValue = part.Split('=');
+                if (keyValue.Length == 2)   // If  keyValue is something like "ClinicID=164&JobID=10", then this works fine. But it isn't printing to the console. (not sure why not)
+                {
+                    Console.WriteLine($"Key: {keyValue[0]}, Value: {keyValue[1]}");
+                }
+                else // If keyValue.Length is not 2, then we have a problem. It does go to the Console.WriteLine, but it doesn't print anything to the console. (not sure why not)
+                {
+                    Console.WriteLine($"keyValue.Length != 2");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");
+        }
     }
 }
