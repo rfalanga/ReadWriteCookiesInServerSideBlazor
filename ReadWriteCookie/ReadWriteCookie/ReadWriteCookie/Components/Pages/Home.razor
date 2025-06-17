@@ -43,11 +43,11 @@
         */
        if (myCookieValue != null && myCookieValue.Length > 0)
         {
-            var parts = myCookieValue.Split('&');
+            var parts = myCookieValue.Split('&');   // If  myCookieValue is something like "ClinicID=164&JobID=10", then this works fine.
             foreach (var part in parts)
             {
                 var keyValue = part.Split('=');
-                if (keyValue.Length == 2)   // If  keyValue is something like "ClinicID=164&JobID=10", then this works fine. But it isn't printing to the console. (not sure why not)
+                if (keyValue.Length == 2)   // If keyValue is something like "ClinicID=164" or "JobID=10", then this works fine. But it isn't printing to the console. (not sure why not)
                 {
                     Console.WriteLine($"Key: {keyValue[0]}, Value: {keyValue[1]}");
                 }
