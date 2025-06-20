@@ -33,8 +33,23 @@
     private string inputLocationValue = "";
     private string inputPositionValue = "";
     public string myCookieValue { get; set; } = "";
+
     protected async Task WriteCookies()
     {
+        // Add sanity checks here to ensure inputLocationValue is not empty or null
+        if (string.IsNullOrWhiteSpace(inputLocationValue))
+        {
+            Console.WriteLine("Location value is empty or null. Please enter a valid value.");
+            return;
+        }
+
+        // Add sanity checks here to ensure inputPositionValue is not empty or null
+        if (string.IsNullOrWhiteSpace(inputPositionValue))
+        {
+            Console.WriteLine("Position value is empty or null. Please enter a valid value.");
+            return;
+        }
+
         //await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, DateTime.Now.AddMinutes(1));    // This is what Rob had
         await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, 366);    // Set cookie to expire 366 days, which we have at work
     }
