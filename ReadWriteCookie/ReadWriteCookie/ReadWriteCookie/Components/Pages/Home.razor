@@ -10,7 +10,11 @@
     The JavaScript functions are defined in the <code>wwwroot/js/cookie.js</code> file. 
 </p>
 
-<input type="text" class="form-control" placeholder="Enter cookie value" @bind="inputValue" />
+<input type="text" class="form-control" placeholder="Cookie value (do NOT enter anything here!)" @bind="inputValue" />
+
+<input type="number" class="form-control" placeholder="Enter location value as an integer" @bind="inputLocationValue" />
+
+<input type="number" class="form-control" placeholder="Enter position value as an integer" @bind="inputPositionValue" />
 
 <button class="btn btn-primary" @onclick="WriteCookies">
     Write Cookie
@@ -26,6 +30,8 @@
 
 @code {
     private string inputValue = "";
+    private string inputLocationValue = "";
+    private string inputPositionValue = "";
     public string myCookieValue { get; set; } = "";
     protected async Task WriteCookies()
     {
