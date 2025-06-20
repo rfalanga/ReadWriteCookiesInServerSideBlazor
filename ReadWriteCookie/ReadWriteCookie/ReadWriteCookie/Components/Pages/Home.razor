@@ -1,86 +1,89 @@
-﻿@page "/"
-@rendermode InteractiveServer
-@inject IJSRuntime JsRuntime;
+﻿@page "/"  
+@rendermode InteractiveServer  
+@inject IJSRuntime JsRuntime;  
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Home</PageTitle>  
 
-<h1>Cookie Demo!</h1>
-<p>
-    This is a demo of how to use cookies in Blazor.
-    The JavaScript functions are defined in the <code>wwwroot/js/cookie.js</code> file. 
-</p>
+<h1>Cookie Demo!</h1>  
+<p>  
+    This is a demo of how to use cookies in Blazor.  
+    The JavaScript functions are defined in the <code>wwwroot/js/cookie.js</code> file.   
+</p>  
 
-<input type="text" class="form-control" placeholder="Cookie value (do NOT enter anything here!)" @bind="inputValue" />
+<input type="text" class="form-control" placeholder="Cookie value (do NOT enter anything here!)" @bind="inputValue" />  
 
-<input type="number" class="form-control" placeholder="Enter location value as an integer" @bind="inputLocationValue" />
+<input type="number" class="form-control" placeholder="Enter location value as an integer" @bind="inputLocationValue" />  
 
-<input type="number" class="form-control" placeholder="Enter position value as an integer" @bind="inputPositionValue" />
+<input type="number" class="form-control" placeholder="Enter position value as an integer" @bind="inputPositionValue" />  
 
-<button class="btn btn-primary" @onclick="WriteCookies">
-    Write Cookie
-</button>
+<button class="btn btn-primary" @onclick="WriteCookies">  
+    Write Cookie  
+</button>  
 
-<button class="btn btn-primary" @onclick="ReadCookies">
-    Read Cookie
-</button>
+<button class="btn btn-primary" @onclick="ReadCookies">  
+    Read Cookie  
+</button>  
 
-<p>The cookie is @myCookieValue</p>
+<p>The cookie is @myCookieValue</p>  
 
-<script src="js/CookieUtilities.js"></script>
+<script src="js/CookieUtilities.js"></script>  
 
-@code {
-    private string inputValue = "";
-    private string inputLocationValue = "";
-    private string inputPositionValue = "";
-    public string myCookieValue { get; set; } = "";
+@code {  
+    private string inputValue = "";  
+    private string inputLocationValue = "";  
+    private string inputPositionValue = "";  
+    public string myCookieValue { get; set; } = "";  
 
-    protected async Task WriteCookies()
-    {
-        // Add sanity checks here to ensure inputLocationValue is not empty or null
-        if (string.IsNullOrWhiteSpace(inputLocationValue))
-        {
-            Console.WriteLine("Location value is empty or null. Please enter a valid value.");
-            return;
-        }
+    private string ConstructInputValue(string locationValue, string positionValue)  
+    {  
+        // Combine location and position values into a single string for the cookie  
+        return $"ClinicID={locationValue}&JobID={positionValue}";  
+    }  
 
-        // Add sanity checks here to ensure inputPositionValue is not empty or null
-        if (string.IsNullOrWhiteSpace(inputPositionValue))
-        {
-            Console.WriteLine("Position value is empty or null. Please enter a valid value.");
-            return;
-        }
+    protected async Task WriteCookies()  
+    {  
+        // Add sanity checks here to ensure inputLocationValue is not empty or null  
+        if (string.IsNullOrWhiteSpace(inputLocationValue))  
+        {  
+            Console.WriteLine("Location value is empty or null. Please enter a valid value.");  
+            return;  
+        }  
 
-        //await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, DateTime.Now.AddMinutes(1));    // This is what Rob had
-        await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, 366);    // Set cookie to expire 366 days, which we have at work
-    }
-    protected async Task ReadCookies()
-    {
-        myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "StaffInfoCookie");
+        // Add sanity checks here to ensure inputPositionValue is not empty or null  
+        if (string.IsNullOrWhiteSpace(inputPositionValue))  
+        {  
+            Console.WriteLine("Position value is empty or null. Please enter a valid value.");  
+            return;  
+        }  
 
-        /*
-         * In my debugging of the old app I discovered that the cookie was written like this:
-         * ClinicID=164&JobID=10
-         * Therefore, what I will do is learn how to parse this type of string into its constituent parts
-        */
-       if (myCookieValue != null && myCookieValue.Length > 0)
-        {
-            var parts = myCookieValue.Split('&');   // If  myCookieValue is something like "ClinicID=164&JobID=10", then this works fine.
-            foreach (var part in parts)
-            {
-                var keyValue = part.Split('=');
-                if (keyValue.Length == 2)   // If keyValue is something like "ClinicID=164" or "JobID=10", then this works fine. But it isn't printing to the console. (not sure why not)
-                {
-                    Console.WriteLine($"Key: {keyValue[0]}, Value: {keyValue[1]}");
-                }
-                else // If keyValue.Length is not 2, then we have a problem. It does go to the Console.WriteLine, but it doesn't print anything to the console. (not sure why not)
-                {
-                    Console.WriteLine($"keyValue.Length != 2");
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");
-        }
-    }
+        inputValue = ConstructInputValue(inputLocationValue, inputPositionValue);  
+
+        await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, 366);    // Set cookie to expire 366 days  
+    }  
+
+    protected async Task ReadCookies()  
+    {  
+        myCookieValue = await JsRuntime.InvokeAsync<string>("ReadCookie", "StaffInfoCookie");  
+
+        if (myCookieValue != null && myCookieValue.Length > 0)  
+        {  
+            var parts = myCookieValue.Split('&');  
+            foreach (var part in parts)  
+            {  
+                var keyValue = part.Split('=');  
+                if (keyValue.Length == 2)  
+                {  
+                    Console.WriteLine($"Key: {keyValue[0]}, Value: {keyValue[1]}");  
+                }  
+                else  
+                {  
+                    Console.WriteLine($"keyValue.Length != 2");  
+                }  
+            }  
+        }  
+        else  
+        {  
+            Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");  
+        }  
+    }  
 }
