@@ -1,6 +1,7 @@
 ﻿@page "/"  
 @rendermode InteractiveServer  
 @inject IJSRuntime JsRuntime;  
+@using ReadWriteCookie.Models;
 
 <PageTitle>Home</PageTitle>  
 
@@ -26,13 +27,54 @@
 
 <p>The cookie is @myCookieValue</p>  
 
+<p>Selected Location @selectedLocationValue</p>
+
+<p>Selected Position @selectedPositionValue</p>
+
+<InputSelect @bind-Value="selectedLocationValue" class="form-control">
+    <option value="">Select a location</option>  
+    @foreach (var location in locations)  
+    {  
+        <option value="@location.ID">@location.PropertyName</option>  
+    }
+</InputSelect>
+
+<InputSelect @bind-Value="selectedPositionValue" class="form-control">
+    <option value="">Select a position</option>  
+    @foreach (var position in positions)  
+    {  
+        <option value="@position.ID">@position.PropertyName</option>  
+    }
+</InputSelect>
+
 <script src="js/CookieUtilities.js"></script>  
 
-@code {  
+@code {
     private string inputValue = "";  
     private string inputLocationValue = "";  
     private string inputPositionValue = "";  
+    private string selectedLocationValue { get; set; } = "";
+    private string selectedPositionValue { get; set; } = "";
     public string myCookieValue { get; set; } = "";  
+
+    // This URL will be useful for built-in Blazor components: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/built-in-components?view=aspnetcore-9.0
+
+    // Pseudo-database for demonstration purposes
+    private List<Location> locations = new List<Location>  
+    {  
+        new Location { ID = 1, PropertyName = "Albuquerque" },  
+        new Location { ID = 2, PropertyName = "Rio Rancho" },
+        new Location { ID = 3, PropertyName = "Los Lunas" },
+        new Location { ID = 4, PropertyName = "Bernalillo" }
+    };
+
+    private List<Position> positions = new List<Position>  
+    {  
+        new Position { ID = 1, PropertyName = "Doctor" },  
+        new Position { ID = 2, PropertyName = "Nurse" },  
+        new Position { ID = 3, PropertyName = "Receptionist" },  
+        new Position { ID = 4, PropertyName = "Technician" }  
+    };
 
     private string ConstructInputValue(string locationValue, string positionValue)  
     {  
@@ -85,5 +127,5 @@
         {  
             Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");  
         }  
-    }  
+    }
 }
