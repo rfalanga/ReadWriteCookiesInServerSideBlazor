@@ -29,11 +29,21 @@
 
 <p>Selected Location @selectedLocationValue</p>
 
+<p>Selected Position @selectedPositionValue</p>
+
 <InputSelect @bind-Value="selectedLocationValue" class="form-control">
     <option value="">Select a location</option>  
     @foreach (var location in locations)  
     {  
         <option value="@location.ID">@location.PropertyName</option>  
+    }
+</InputSelect>
+
+<InputSelect @bind-Value="selectedPositionValue" class="form-control">
+    <option value="">Select a position</option>  
+    @foreach (var position in positions)  
+    {  
+        <option value="@position.ID">@position.PropertyName</option>  
     }
 </InputSelect>
 
@@ -43,8 +53,9 @@
     private string inputValue = "";  
     private string inputLocationValue = "";  
     private string inputLocationValue2 = "";  
-    private string selectedLocationValue { get; set; } = "";
     private string inputPositionValue = "";  
+    private string selectedLocationValue { get; set; } = "";
+    private string selectedPositionValue { get; set; } = "";
     public string myCookieValue { get; set; } = "";  
 
     // This URL will be useful for built-in Blazor components: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/built-in-components?view=aspnetcore-9.0
