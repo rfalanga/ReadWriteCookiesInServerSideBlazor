@@ -52,7 +52,6 @@
 @code {
     private string inputValue = "";  
     private string inputLocationValue = "";  
-    private string inputLocationValue2 = "";  
     private string inputPositionValue = "";  
     private string selectedLocationValue { get; set; } = "";
     private string selectedPositionValue { get; set; } = "";
@@ -128,12 +127,5 @@
         {  
             Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");  
         }  
-    }
-    
-    private void OnValueChanged(ChangeEventArgs e)  
-    {  
-        // This method is from the first example given by Bing Copilot. It is simple, and I think will only work if there is just one dropdown.
-        //Console.WriteLine($"Input value changed to: {e.Value}");  
-        selectedLocationValue = e.Value?.ToString() ?? "";
     }
 }
