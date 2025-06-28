@@ -27,10 +27,6 @@
 
 <p>The cookie is @myCookieValue</p>  
 
-<p>Selected Location @selectedLocationValue</p>
-
-<p>Selected Position @selectedPositionValue</p>
-
 <InputSelect @bind-Value="selectedLocationValue" class="form-control">
     <option value="">Select a location</option>  
     @foreach (var location in locations)  
@@ -47,7 +43,13 @@
     }
 </InputSelect>
 
-<script src="js/CookieUtilities.js"></script>  
+<br />
+
+<p>Selected Location @selectedLocationValue</p>
+
+<p>Selected Position @selectedPositionValue</p>
+
+<script src="js/CookieUtilities.js"></script>
 
 @code {
     private string inputValue = "";  
