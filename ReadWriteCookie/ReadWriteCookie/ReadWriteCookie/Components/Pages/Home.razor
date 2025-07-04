@@ -27,21 +27,26 @@
 
 <p>The cookie is @myCookieValue</p>  
 
-<InputSelect @bind-Value="selectedLocationValue" class="form-control">
-    <option value="">Select a location</option>  
-    @foreach (var location in locations)  
-    {  
-        <option value="@location.ID">@location.PropertyName</option>  
-    }
-</InputSelect>
-
-<InputSelect @bind-Value="selectedPositionValue" class="form-control">
-    <option value="">Select a position</option>  
-    @foreach (var position in positions)  
-    {  
-        <option value="@position.ID">@position.PropertyName</option>  
-    }
-</InputSelect>
+<dl class="row">
+    <dd class="col-sm-5">
+        <InputSelect @bind-Value="selectedLocationValue" class="form-control">
+            <option value="">Select a location</option>
+            @foreach (var location in locations)
+            {
+                <option value="@location.ID">@location.PropertyName</option>
+            }
+        </InputSelect>
+    </dd>
+    <dd class="col-sm-5">
+        <InputSelect @bind-Value="selectedPositionValue" class="form-control">
+            <option value="">Select a position</option>
+            @foreach (var position in positions)
+            {
+                <option value="@position.ID">@position.PropertyName</option>
+            }
+        </InputSelect>
+    </dd>
+</dl>
 
 <br />
 
