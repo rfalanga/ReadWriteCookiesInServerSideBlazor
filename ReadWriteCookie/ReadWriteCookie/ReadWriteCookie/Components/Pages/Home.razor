@@ -13,9 +13,11 @@
 
 <input type="text" class="form-control" placeholder="Cookie value (do NOT enter anything here!)" @bind="inputValue" />  
 
-<input type="number" class="form-control" placeholder="Enter location value as an integer" @bind="inputLocationValue" />  
+<input type="number" class="form-control" placeholder="Enter location value as an integer (don't use this)" @bind="inputLocationValue" />  
 
-<input type="number" class="form-control" placeholder="Enter position value as an integer" @bind="inputPositionValue" />  
+<input type="number" class="form-control" placeholder="Enter position value as an integer (don't use this)" @bind="inputPositionValue" />
+
+<br />
 
 <button class="btn btn-primary" @onclick="WriteCookies">  
     Write Cookie  
@@ -25,7 +27,10 @@
     Read Cookie  
 </button>  
 
-<p>The cookie is @myCookieValue</p>  
+<br />
+<br />
+
+<p>The cookie is @myCookieValue</p>
 
 <dl class="row">
     <dd class="col-sm-5">
