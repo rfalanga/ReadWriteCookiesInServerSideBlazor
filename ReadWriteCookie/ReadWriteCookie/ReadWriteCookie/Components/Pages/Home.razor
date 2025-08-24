@@ -118,7 +118,7 @@
         //     return;  
         // }  
 
-        inputValue = ConstructInputValue(inputLocationValue, inputPositionValue);  
+        inputValue = ConstructInputValue(selectedLocationValue, selectedPositionValue);  
 
         await JsRuntime.InvokeAsync<object>("WriteCookie", "StaffInfoCookie", this.inputValue, 366);    // Set cookie to expire 366 days  
     }  
