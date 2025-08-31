@@ -9,3 +9,7 @@ I used .NET 9 to create this project. I chose the Blazor Web App template when I
 ## Background
 
 I want to be able to read and write cookies in a Blazor Server application. I have a need to store some data in cookies that I can read later. I also want to be able to write cookies that can be read by the client.
+
+### Testing 1
+
+I want to see if simply assigning a PR to someone (me in this case) is sufficient to get an email.
