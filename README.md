@@ -13,3 +13,7 @@ I want to be able to read and write cookies in a Blazor Server application. I ha
 ### Testing 1
 
 I want to see if simply assigning a PR to someone (me in this case) is sufficient to get an email.
+
+### Testing 2
+
+Well, Test 1 wasn't successful. However, it might be because I was specifying myself when I assigned it and since I'm the only one, it didn't matter. So, in a way, I haven't proven anything. Nevertheless, I'll try specifically mentioning myself in the PR.
