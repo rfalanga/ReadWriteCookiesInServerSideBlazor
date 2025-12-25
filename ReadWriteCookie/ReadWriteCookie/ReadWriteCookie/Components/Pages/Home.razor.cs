@@ -1,9 +1,5 @@
 ﻿using Microsoft.JSInterop;
-using PdfSharp.Drawing;
 using ReadWriteCookie.Models;
-using System.ComponentModel.Design;
-
-
 
 namespace ReadWriteCookie.Components.Pages;
 
@@ -86,19 +82,5 @@ public partial class Home
         {
             Console.WriteLine("Cookie is empty or not set the way it needs to be for parsing the cookie.");
         }
-    }
-
-    // Add a bUnit test 
-    [XUnit.Fact]
-    public void Test_ConstructInputValue()
-    {
-        // Arrange
-        var locationValue = "2"; // Rio Rancho
-        var positionValue = "3"; // Receptionist
-        var expected = "ClinicID=2&JobID=3";
-        // Act
-        var result = ConstructInputValue(locationValue, positionValue);
-        // Assert
-        XUnit.Assert.Equal(expected, result);
     }
 }
