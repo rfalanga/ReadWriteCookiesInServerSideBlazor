@@ -10,7 +10,7 @@
 		<Using Include="Bunit" />
 		<Using Include="Bunit.TestDoubles" />
 		<Using Include="Microsoft.Extensions.DependencyInjection" />
-		<Using Include="Xunit"/>
+		<Using Include="Xunit" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -28,6 +28,10 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ReadWriteCookie\ReadWriteCookie\ReadWriteCookie.csproj" />
 	</ItemGroup>
 
 

@@ -5,13 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ReadWriteCookie.Tests;
 
-public class HomeTests : TestContext
+public class HomeTests : BunitContext
 {
     [Fact]
     public void Test_ConstructInputValue()
     {
         // Arrange
-        var component = RenderComponent<Home>();
+        var component = Render<Home>();
         
         // Act
         var result = component.Instance.ConstructInputValue("1", "2");
