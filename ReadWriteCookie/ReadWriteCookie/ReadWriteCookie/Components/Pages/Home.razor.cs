@@ -31,7 +31,7 @@ public partial class Home
         new Position { ID = 4, PropertyName = "Technician" }
     ];
 
-    private string ConstructInputValue(string locationValue, string positionValue)
+    public string ConstructInputValue(string locationValue, string positionValue)   // Made public for unit testing purposes
     {
         // Combine location and position values into a single string for the cookie  
         return $"ClinicID={locationValue}&JobID={positionValue}";
