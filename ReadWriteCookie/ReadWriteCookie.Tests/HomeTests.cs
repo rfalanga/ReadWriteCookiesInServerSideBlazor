@@ -22,6 +22,6 @@ public class HomeTests : BunitContext
     { 
         var component = Render<Home>();
 
-        component.MarkupMatches(@"<h1>Cookie Demo!</h1>");
+        component.Find("h1").MarkupMatches("<h1>Cookie Demo!</h1>");
     }
 }
