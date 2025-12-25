@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ReadWriteCookie.Client\ReadWriteCookie.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.5" />
+    <PackageReference Include="PDFsharp" Version="6.2.3" />
   </ItemGroup>
 
 </Project>

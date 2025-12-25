@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36127.28 d17.14
+VisualStudioVersion = 17.14.36127.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadWriteCookie", "ReadWriteCookie\ReadWriteCookie\ReadWriteCookie.csproj", "{74BA30A9-12E7-4D7C-9D8C-5B3E8555194C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadWriteCookie.Client", "ReadWriteCookie\ReadWriteCookie.Client\ReadWriteCookie.Client.csproj", "{E06145E3-024F-4794-910E-EC19DBAC7A60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadWriteCookie.Tests", "ReadWriteCookie.Tests\ReadWriteCookie.Tests.csproj", "{173B085F-83B2-6086-CD10-A3406122F2A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E06145E3-024F-4794-910E-EC19DBAC7A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E06145E3-024F-4794-910E-EC19DBAC7A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E06145E3-024F-4794-910E-EC19DBAC7A60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173B085F-83B2-6086-CD10-A3406122F2A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173B085F-83B2-6086-CD10-A3406122F2A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173B085F-83B2-6086-CD10-A3406122F2A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173B085F-83B2-6086-CD10-A3406122F2A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
