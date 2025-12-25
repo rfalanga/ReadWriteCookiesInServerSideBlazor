@@ -16,4 +16,12 @@ public class HomeTests : BunitContext
         // Assert
         Assert.Equal("ClinicID=1&JobID=2", result);
     }
+
+    [Fact]
+    public void Test_HomeH1()
+    { 
+        var component = Render<Home>();
+
+        component.MarkupMatches(@"<h1>Cookie Demo!</h1>");
+    }
 }
