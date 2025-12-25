@@ -15,7 +15,7 @@ public partial class Home
     // This URL will be useful for built-in Blazor components: https://learn.microsoft.com/en-us/aspnet/core/blazor/components/built-in-components?view=aspnetcore-9.0
 
     // Pseudo-database for demonstration purposes
-    private List<Location> locations = new List<Location>
+    private List<Location> locations = new()
     {
         new Location { ID = 1, PropertyName = "Albuquerque" },
         new Location { ID = 2, PropertyName = "Rio Rancho" },
@@ -23,13 +23,13 @@ public partial class Home
         new Location { ID = 4, PropertyName = "Bernalillo" }
     };
 
-    private List<Position> positions = new List<Position>
-    {
+    private List<Position> positions =
+    [
         new Position { ID = 1, PropertyName = "Doctor" },
         new Position { ID = 2, PropertyName = "Nurse" },
         new Position { ID = 3, PropertyName = "Receptionist" },
         new Position { ID = 4, PropertyName = "Technician" }
-    };
+    ];
 
     private string ConstructInputValue(string locationValue, string positionValue)
     {
